@@ -1,0 +1,6 @@
+{
+    "Content-type": "application/json;charset=utf-8",
+    "url": "https://api.test.ru/",
+    "list_infoblock": "api/test/getall/",
+    "infoblock": "api/test/get/"
+}

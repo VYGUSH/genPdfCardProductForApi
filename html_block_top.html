@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ASPIRE</title>
+</head>
+<body>
+
+<p style="text-align:center"><b>Предложение (оффер):</b> &quot;{{json_.get('name')}}&quot;<br />
+<!--    <b>Относится к блоку:</b> {{infoblocks.get(json_.get('iblock'))}}<br />   -->
+    <b>Категория для &quot;{{json_.get('name')}}&quot;:</b> {{categories.get(json_.get('category'))}}<br />
+    <b>ID предложения (оффера) у &quot;{{json_.get('name')}}&quot;:</b> {{json_.get('id')}}
+</p>
+
+<!-- Фото не жуются гига чатом и много весят
+<p style="text-align:center">
+    {% for image in json_.get('images') %}
+    <img alt="" src={{image}} style="height:102px; width:155px" />&nbsp;
+    {% endfor %}
+</p>
+-->
+
+{% if bool(json_.get('privilege')) %}
+<p><b>Привилегии, бонусы, скидки и предложения для клиентов:</b>
+<ul>
+    {% for priv in list(json_.get('privilege')) %}
+        <li>Привилегия в &quot;{{json_.get('name')}}&quot;: {{priv}}</li>
+    {% endfor %}
+</ul>
+</p>
+{% endif %}
+
+{% if bool(json_.get('top')) %}
+<p><b>&quot;{{json_.get('name')}}&quot; входит в список ТОП</b></p>
+{% endif %}
+
+{% if bool(json_.get('age')) %}
+<p><b>Возростное ограничение для &quot;{{json_.get('name')}}&quot;:</b> {{json_.get('age')}}</p>
+{% endif %}
+
+<p>
+{% if bool(json_.get('countryname'))%}
+<b>&quot;{{json_.get('name')}}&quot; находится в стране:</b> {{json_.get('countryname')}}<br />
+{% endif %}
+{% if bool(json_.get('cityname'))%}
+<b>&quot;{{json_.get('name')}}&quot; находится в город:</b> {{json_.get('cityname')}}<br />
+{% endif %}
+{% if bool(json_.get('address')) %}
+<b>&quot;{{json_.get('name')}}&quot; находится по адресу:</b> {{json_.get('address')}}<br />
+{% endif %}
+{% if bool(json_.get('latitude')) and bool(json_.get('longitude'))%}
+<b>&quot;{{json_.get('name')}}&quot; имеет координаты:</b> {{json_.get('latitude')}}, {{json_.get('longitude')}}<br />
+{% endif %}
+</p>
+
+
+{% if bool(json_.get('activefrom')) or bool(json_.get('activeto')) %}
+<p>
+{% if bool(json_.get('activefrom')) %}
+<b>Дата начала активности по предложению &quot;{{json_.get('name')}}&quot;:</b> {{json_.get('activefrom')}}<br />
+{% endif %}
+{% if bool(json_.get('activeto')) %}
+<b>Дата окончания активности по предложению &quot;{{json_.get('name')}}&quot;:</b> {{json_.get('activeto')}}<br />
+{% endif %}
+</p>
+{% endif %}
+
+
+{% if bool(json_.get('description')) %}
+<p><b>Описание &quot;{{json_.get('name')}}&quot;:</b><br />
+    {{json_.get('description')}}
+</p>
+{% endif %}
+<p><b>Чтобы воспользоваться предложением &quot;{{json_.get('name')}}&quot;, свяжитесь с вашим менеджером по ссылке: https://t.me/sber1_lifestyle_bot</b></p>
+
+<!--Разделям страницы для PDF (перенос на новый лист)-->
+<div style="page-break-before: always;">
+</body>
+</html>

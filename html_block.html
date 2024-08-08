@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ASPIRE</title>
+</head>
+<body>
+    
+<!-- style="text-align:center"> -->
+<p>
+    Предложение (оффер):<b>&quot;{{json_.get('name')}}&quot;</b> с ID {{json_.get('id')}},
+    относится к категории {{categories.get(json_.get('category'))}}.
+    {% if bool(json_.get('privilege')) %}
+    Клиенту предоставляются привилегии
+        {% for priv in list(json_.get('privilege')) %}
+        {{priv}};
+        {% endfor %}
+    {% endif %}
+    {% if bool(json_.get('top')) %} Входит в ТОП.{% endif %}
+    {% if bool(json_.get('age')) %} Возростное ограничение: {{json_.get('age')}}.{% endif %}
+    {% if bool(json_.get('countryname'))%} Находится в стране: {{json_.get('countryname')}}, {% endif %}
+    {% if bool(json_.get('cityname'))%} город: {{json_.get('cityname')}},{% endif %}
+    {% if bool(json_.get('address')) %} по адресу: {{json_.get('address')}},{% endif %}
+    {% if bool(json_.get('latitude')) and bool(json_.get('longitude'))%} имеет координаты {{json_.get('latitude')}}, {{json_.get('longitude')}}.{% endif %}
+    {% if bool(json_.get('description')) %} {{split_tag(json_.get('description'))}} {% endif %}
+</p>
+
+<!--Разделям страницы для PDF (перенос на новый лист)
+<div style="page-break-before: always;">-->
+</body>
+</html>

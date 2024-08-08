@@ -1,0 +1,17 @@
+{
+    "id": {
+        "usage": "True",
+        "type": "number",
+        "name": "Идентификатор элемента (ID)"
+    },
+    "name": {
+        "usage": "True",
+        "type": "string",
+        "name": "Название"
+    },
+    "category": {
+        "usage": "True",
+        "type": "number",
+        "name": "ID Категории"
+    }
+}
